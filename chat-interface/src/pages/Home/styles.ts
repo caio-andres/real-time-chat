@@ -63,6 +63,7 @@ export const Card = styled.div`
 
 export const MyMessage = styled.li`
   padding: 8px;
+  margin-right: 20px;
   text-decoration: none;
   display: flex;
   flex-direction: column;
@@ -72,7 +73,7 @@ export const MyMessage = styled.li`
   width: 200px;
 
   background: #0088cc;
-  color: #fff;
+  color: #000;
 
   border-radius: 9px;
 
@@ -83,6 +84,8 @@ export const MyMessage = styled.li`
 
 export const OtherMessage = styled.li`
   padding: 8px;
+  margin-left: 20px;
+  margin-bottom: 5px;
   text-decoration: none;
   display: flex;
   flex-direction: column;
