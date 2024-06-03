@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as uuid from "uuid";
 
 import io from "socket.io-client";
@@ -24,7 +24,7 @@ const Home: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
-    function reicevedMessage(message: Payload) {
+    function receivedMessage(message: Payload) {
       const newMessage: Message = {
         id: uuid.v4(),
         name: message.name,
@@ -35,7 +35,7 @@ const Home: React.FC = () => {
     }
 
     socket.on("msgToClient", (message: Payload) => {
-      reicevedMessage(message);
+      receivedMessage(message);
     });
   }, [messages, name, text]);
 
@@ -73,7 +73,7 @@ const Home: React.FC = () => {
                   <MyMessage key={message.id}>
                     <span>
                       {message.name}
-                      {` diz:`}
+                      {" diz:"}
                     </span>
 
                     <p>{message.text}</p>
@@ -85,7 +85,7 @@ const Home: React.FC = () => {
                 <OtherMessage key={message.id}>
                   <span>
                     {message.name}
-                    {` diz:`}
+                    {" diz:"}
                   </span>
 
                   <p>{message.text}</p>
