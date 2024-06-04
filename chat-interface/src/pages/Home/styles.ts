@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 export const Container = styled.div``;
 
@@ -13,3 +13,12 @@ export const Card = styled.div``;
 export const MyMessage = styled.li``;
 
 export const OtherMessage = styled.li``;
+
+export const rotate = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+   transform: rotate(360deg);
+  }
+`;

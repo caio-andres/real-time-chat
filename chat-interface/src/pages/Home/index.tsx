@@ -3,6 +3,7 @@ import * as uuid from "uuid";
 
 import io from "socket.io-client";
 
+import { handleRefreshClick } from "./func/refreshClick";
 import {
   Container,
   Content,
@@ -11,6 +12,7 @@ import {
   OtherMessage,
   Title,
   Top,
+  rotate,
 } from "./styles";
 
 interface Message {
@@ -31,6 +33,7 @@ const Home: React.FC = () => {
   const [name, setName] = useState("");
   const [text, setText] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
+  const [isRotating, setIsRotating] = useState(false);
 
   useEffect(() => {
     function receivedMessage(message: Payload) {
@@ -66,11 +69,25 @@ const Home: React.FC = () => {
 
   return (
     <Container className="d-flex flex-column align-items-center w-100">
-      <Top className="d-flex justify-content-around w-100 p-3">
+      <Top className="d-flex justify-content-between w-100 p-3">
         <Title className="text-secondary">{title}</Title>
-        <div>
-          <img src="svg/refresh.svg" width="40" height="40" alt="Refresh" />
-          <img src="images/eu-circle.png" width="40" />
+        <div className="d-flex gap-2">
+          <img
+            src="svg/refresh.svg"
+            width="32"
+            height="32"
+            alt="Refresh"
+            style={{ cursor: "pointer" }}
+            className={isRotating ? `${rotate} infinite 1s linear` : ""}
+            onClick={() => handleRefreshClick(setIsRotating)}
+          />
+          <img
+            src="images/eu-circle.png"
+            width="32"
+            height="32"
+            alt="Profile"
+            style={{ cursor: "pointer" }}
+          />
         </div>
       </Top>
       <Content>
