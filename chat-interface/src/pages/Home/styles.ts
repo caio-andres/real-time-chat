@@ -2,13 +2,16 @@ import styled from "styled-components";
 
 export const Container = styled.div``;
 
-export const Top = styled.div``;
+export const Top = styled.header``;
 
 export const Title = styled.h1``;
 
-export const Content = styled.div``;
+export const Content = styled.main``;
 
-export const Card = styled.div``;
+export const Card = styled.div`
+  overflow-y: auto;
+  max-height: 50vh;
+`;
 
 export const MyMessage = styled.li`
   padding: 8px;
