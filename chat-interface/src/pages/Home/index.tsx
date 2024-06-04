@@ -12,7 +12,6 @@ import {
   OtherMessage,
   Title,
   Top,
-  rotate,
 } from "./styles";
 
 interface Message {
@@ -69,7 +68,13 @@ const Home: React.FC = () => {
 
   return (
     <Container className="d-flex flex-column align-items-center w-100">
-      <Top className="d-flex justify-content-between w-100 p-3">
+      <Top
+        className="d-flex justify-content-between w-100 p-3 align-items-center"
+        style={{
+          cursor: "default",
+          borderBottom: "1px solid #292727",
+        }}
+      >
         <Title className="text-secondary">{title}</Title>
         <div className="d-flex gap-2">
           <img
@@ -78,20 +83,21 @@ const Home: React.FC = () => {
             height="32"
             alt="Refresh"
             style={{ cursor: "pointer" }}
-            className={isRotating ? `${rotate} infinite 1s linear` : ""}
-            onClick={() => handleRefreshClick(setIsRotating)}
+            onClick={() => handleRefreshClick()}
           />
-          <img
-            src="images/eu-circle.png"
-            width="32"
-            height="32"
-            alt="Profile"
-            style={{ cursor: "pointer" }}
-          />
+          <a href="https://linktr.ee/caioandres" target="_blank">
+            <img
+              src="images/eu-circle.png"
+              width="32"
+              height="32"
+              alt="Profile"
+              style={{ cursor: "pointer" }}
+            />
+          </a>
         </div>
       </Top>
-      <Content>
-        <div className="input-group mb-3">
+      <Content className="m-5 w-100 d-flex flex-column align-items-center">
+        <div className="input-group m-3 w-25">
           <span
             className="input-group-text"
             style={{ cursor: "help" }}
@@ -104,7 +110,7 @@ const Home: React.FC = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="form-control"
-            placeholder="Username"
+            placeholder="Type you user..."
           />
         </div>
 
@@ -128,25 +134,22 @@ const Home: React.FC = () => {
                   <span className="text-white" style={{ fontSize: "18px" }}>
                     {message.name}
                   </span>
-
                   <p>{message.text}</p>
                 </OtherMessage>
               );
             })}
           </ul>
         </Card>
-        <div className="input-group input-group-sm mb-3">
+        <div className="input-group input-group-sm m-3 w-25">
           <input
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Message..."
             className="form-control"
-            aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-sm"
           />
           <button
-            className="btn btn-secondary"
+            className="btn btn-primary"
             type="button"
             onClick={() => sendMessage()}
           >

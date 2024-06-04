@@ -2,12 +2,9 @@ export const resetPage = () => {
   window.location.reload();
 };
 
-export const handleRefreshClick = (
-  setIsRotating: React.Dispatch<React.SetStateAction<boolean>>
-) => {
-  setIsRotating(true);
+export const handleRefreshClick = () => {
   setTimeout(() => {
-    setIsRotating(false);
+    console.log(localStorage.getItem("nome"));
     resetPage();
-  }, 1000);
+  }, 100);
 };
