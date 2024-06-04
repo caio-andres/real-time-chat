@@ -12,6 +12,7 @@ import {
   OtherMessage,
   Title,
   Top,
+  Footer,
 } from "./styles";
 
 interface Message {
@@ -29,9 +30,10 @@ const socket = io("http://localhost:3333");
 
 const Home: React.FC = () => {
   const [title] = useState("Real-time Chat");
-  const [name, setName] = useState("");
-  const [text, setText] = useState("");
+  const [name, setName] = useState<string>("");
+  const [text, setText] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([]);
+  const [refreshMsg, setRefreshMsg] = useState<string>("");
 
   useEffect(() => {
     function receivedMessage(message: Payload) {
@@ -68,14 +70,32 @@ const Home: React.FC = () => {
   return (
     <Container className="d-flex flex-column align-items-center w-100">
       <Top
-        className="d-flex justify-content-between w-100 p-3 align-items-center"
+        className="d-flex justify-content-between w-100 p-3 align-items-center row"
         style={{
           cursor: "default",
           borderBottom: "1px solid #292727",
         }}
       >
-        <Title className="text-secondary">{title}</Title>
-        <div className="d-flex gap-2">
+        <Title className="text-secondary col-sm font-monospace text-uppercase">
+          {title}
+        </Title>
+        <div className="input-group m-3 col-sm">
+          <span
+            className="input-group-text"
+            style={{ cursor: "default" }}
+            title="Type your Username"
+          >
+            @
+          </span>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="form-control"
+            placeholder="Type you user..."
+          />
+        </div>
+        <div className="d-flex gap-2 col-sm justify-content-end">
           <img
             src="svg/refresh.svg"
             width="32"
@@ -96,23 +116,6 @@ const Home: React.FC = () => {
         </div>
       </Top>
       <Content className="m-5 w-100 d-flex flex-column align-items-center">
-        <div className="input-group m-3 w-25">
-          <span
-            className="input-group-text"
-            style={{ cursor: "default" }}
-            title="Type your Username"
-          >
-            @
-          </span>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="form-control"
-            placeholder="Type you user..."
-          />
-        </div>
-
         <Card className="w-25">
           <ul className="d-flex flex-column">
             {messages.map((message) => {
@@ -155,7 +158,9 @@ const Home: React.FC = () => {
             Send
           </button>
         </div>
+        <Footer></Footer>
       </Content>
+      a
     </Container>
   );
 };

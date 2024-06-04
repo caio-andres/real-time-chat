@@ -4,7 +4,6 @@ export const resetPage = () => {
 
 export const handleRefreshClick = () => {
   setTimeout(() => {
-    console.log(localStorage.getItem("nome"));
     resetPage();
-  }, 100);
+  }, 3000);
 };

@@ -52,3 +52,5 @@ export const OtherMessage = styled.li`
     margin-top: 4px;
   }
 `;
+
+export const Footer = styled.footer``
