@@ -32,7 +32,6 @@ const Home: React.FC = () => {
   const [name, setName] = useState("");
   const [text, setText] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
-  const [isRotating, setIsRotating] = useState(false);
 
   useEffect(() => {
     function receivedMessage(message: Payload) {
