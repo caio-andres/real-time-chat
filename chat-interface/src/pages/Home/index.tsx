@@ -34,6 +34,7 @@ const Home: React.FC = () => {
   const [text, setText] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [refreshMsg, setRefreshMsg] = useState<string>("");
+  const [clickRefresh, setClickRefresh] = useState<boolean>(false);
 
   useEffect(() => {
     function receivedMessage(message: Payload) {
@@ -102,7 +103,11 @@ const Home: React.FC = () => {
             height="32"
             alt="Refresh"
             style={{ cursor: "pointer" }}
-            onClick={() => handleRefreshClick()}
+            onClick={() => {
+              handleRefreshClick();
+              setRefreshMsg("Refreshing the page...");
+              setClickRefresh(true);
+            }}
           />
           <a href="https://linktr.ee/caioandres" target="_blank">
             <img
@@ -160,7 +165,32 @@ const Home: React.FC = () => {
         </div>
         <Footer></Footer>
       </Content>
-      a
+      {clickRefresh === true ? (
+        <p className="fs-5 text-white fw-bold bg-dark p-4 rounded border border-light">
+          {refreshMsg}
+        </p>
+      ) : (
+        <div className="d-flex flex-column align-items-center w-25 bg-dark p-4 rounded border border-secondary my-2">
+          <h3 className="text-white font-monospace">Welcome to the Chat!</h3>
+          <p className="text-secondary text-center font-monospace">
+            Write your name in the designated field, and then type your message
+            in the field above. When you press "Send", your message will be sent
+            to the ID you are chatting with in real time.
+          </p>
+          <div className="d-flex gap-3 my-4">
+            <span className="text-info font-monospace">React</span>
+            <span className="text-danger font-monospace">NestJS</span>
+            <span className="text-white font-monospace">WebSockets</span>
+            <span className="text-primary font-monospace">TypeScript</span>
+            <span style={{ color: "#820AFA" }}>Bootstrap</span>
+          </div>
+          <footer className="text-white">
+            <span className="text-secondary">{new Date().getFullYear()}</span>{" "}
+            Real-time Chat <span className="text-secondary">&#169;</span> Caio
+            André
+          </footer>
+        </div>
+      )}
     </Container>
   );
 };

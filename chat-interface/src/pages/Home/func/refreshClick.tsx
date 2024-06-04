@@ -5,5 +5,5 @@ export const resetPage = () => {
 export const handleRefreshClick = () => {
   setTimeout(() => {
     resetPage();
-  }, 3000);
+  }, 1000);
 };
