@@ -2,7 +2,16 @@ import React, { useEffect, useState } from "react";
 import * as uuid from "uuid";
 
 import io from "socket.io-client";
-import { Container, Content, Card, MyMessage, OtherMessage } from "./styles";
+
+import {
+  Container,
+  Content,
+  Card,
+  MyMessage,
+  OtherMessage,
+  Title,
+  Top,
+} from "./styles";
 
 interface Message {
   id: string;
@@ -18,7 +27,7 @@ interface Payload {
 const socket = io("http://localhost:3333");
 
 const Home: React.FC = () => {
-  const [title] = useState("Chat Web");
+  const [title] = useState("Real-time Chat");
   const [name, setName] = useState("");
   const [text, setText] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
@@ -56,24 +65,40 @@ const Home: React.FC = () => {
   }
 
   return (
-    <Container>
+    <Container className="d-flex flex-column align-items-center w-100">
+      <Top className="d-flex justify-content-around w-100 p-3">
+        <Title className="text-secondary">{title}</Title>
+        <div>
+          <img src="svg/refresh.svg" width="40" height="40" alt="Refresh" />
+          <img src="images/eu-circle.png" width="40" />
+        </div>
+      </Top>
       <Content>
-        <h1>{title}</h1>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Enter name..."
-        />
+        <div className="input-group mb-3">
+          <span
+            className="input-group-text"
+            style={{ cursor: "help" }}
+            title="Type your Username"
+          >
+            @
+          </span>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="form-control"
+            placeholder="Username"
+          />
+        </div>
+
         <Card>
           <ul>
             {messages.map((message) => {
               if (message.name === name) {
                 return (
                   <MyMessage key={message.id}>
-                    <span>
+                    <span className="text-white" style={{ fontSize: "18px" }}>
                       {message.name}
-                      {" diz:"}
                     </span>
 
                     <p>{message.text}</p>
@@ -83,9 +108,8 @@ const Home: React.FC = () => {
 
               return (
                 <OtherMessage key={message.id}>
-                  <span>
+                  <span className="text-white" style={{ fontSize: "18px" }}>
                     {message.name}
-                    {" diz:"}
                   </span>
 
                   <p>{message.text}</p>
@@ -94,14 +118,24 @@ const Home: React.FC = () => {
             })}
           </ul>
         </Card>
-        <input
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="Enter message..."
-        />
-        <button type="button" onClick={() => sendMessage()}>
-          Send
-        </button>
+        <div className="input-group input-group-sm mb-3">
+          <input
+            type="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder="Message..."
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+          />
+          <button
+            className="btn btn-secondary"
+            type="button"
+            onClick={() => sendMessage()}
+          >
+            Send
+          </button>
+        </div>
       </Content>
     </Container>
   );
