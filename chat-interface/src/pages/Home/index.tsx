@@ -99,7 +99,7 @@ const Home: React.FC = () => {
         <div className="input-group m-3 w-25">
           <span
             className="input-group-text"
-            style={{ cursor: "help" }}
+            style={{ cursor: "default" }}
             title="Type your Username"
           >
             @
@@ -113,8 +113,8 @@ const Home: React.FC = () => {
           />
         </div>
 
-        <Card>
-          <ul>
+        <Card className="w-25">
+          <ul className="d-flex flex-column">
             {messages.map((message) => {
               if (message.name === name) {
                 return (
