@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import * as uuid from "uuid";
+import { FaRegUser } from "react-icons/fa";
+import { IoSendOutline } from "react-icons/io5";
 
 import io from "socket.io-client";
 
@@ -120,14 +122,20 @@ const Home: React.FC = () => {
         Welcome to the Real-time Chat
       </h3>
 
-      <div className="input-group input-group-md m-3 col-sm w-25 d-flex flex-column">
-        <span>User</span>
+      <div className="input-group input-group-md m-3 col-sm w-25">
+        <span
+          className="input-group-text bg-dark text-success"
+          style={{ cursor: "default" }}
+          title="User"
+        >
+          <FaRegUser />
+        </span>
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="form-control w-100 rounded"
-          placeholder="Type your username..."
+          className="form-control"
+          placeholder="Username..."
         />
       </div>
       <Content className="mb-3 w-100 d-flex flex-column align-items-center">
@@ -170,7 +178,7 @@ const Home: React.FC = () => {
             type="button"
             onClick={() => sendMessage()}
           >
-            Send
+            <IoSendOutline />
           </button>
         </div>
       </Content>
