@@ -194,16 +194,34 @@ const Home: React.FC = () => {
         <></>
       ) : (
         <>
-          <HowToUse className="align-items-center p-2 rounded border border-dark font-monospace">
-            <span className="text-white">How to chat</span>
-            <p className="text-secondary text-center">
-              <span style={{ color: "#3aaf69" }}>1.</span> Type your Username
-              <br />
-              <span style={{ color: "#3aaf69" }}>2.</span> Type your message
-              <br />
-              <span style={{ color: "#3aaf69" }}>3.</span> Send it
-            </p>
-            <p className="text-secondary">That simple! :D</p>
+          <HowToUse className="accordion-item align-items-center p-2 rounded border border-dark font-monospace">
+            <span className="text-white">
+              <button
+                className="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                How to chat
+              </button>
+            </span>
+            <div
+              id="collapseOne"
+              className="accordion-collapse collapse show"
+              aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample"
+            >
+              <p className="text-secondary text-center">
+                <span style={{ color: "#3aaf69" }}>1.</span> Type your Username
+                <br />
+                <span style={{ color: "#3aaf69" }}>2.</span> Type your message
+                <br />
+                <span style={{ color: "#3aaf69" }}>3.</span> Send it
+              </p>
+              <p className="text-secondary">That simple! :D</p>
+            </div>
           </HowToUse>
         </>
       )}
