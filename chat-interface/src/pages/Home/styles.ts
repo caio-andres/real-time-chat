@@ -96,11 +96,7 @@ export const HowToUse = styled.div`
     width: 63%;
   }
 
-  @media (max-height: 699px) {
-    font-size: 14px;
-  }
-
-  @media (max-height: 680px) {
+  @media (max-height: 900px) {
     display: none;
   }
 `;
@@ -114,7 +110,7 @@ export const Footer = styled.footer`
   align-items: center;
   font-size: 14px;
 
-  @media (max-height: 480px) {
+  @media (max-height: 610px) {
     display: none;
   }
 `;
@@ -127,4 +123,14 @@ export const Developed = styled.div`
   @media (max-width: 540px) {
     font-size: 10px;
   }
+`;
+
+export const Refresh = styled.p`
+  display: flex;
+  justify-content: space-between;
+  background-color: #121629;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  border: solid #212529 0.2px;
 `;

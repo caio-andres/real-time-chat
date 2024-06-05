@@ -24,6 +24,7 @@ import {
   HowToUse,
   Developed,
   Welcome,
+  Refresh,
 } from "./styles";
 
 interface Message {
@@ -190,14 +191,7 @@ const Home: React.FC = () => {
         </div>
       </Content>
       {clickRefresh === true ? (
-        <HowToUse
-          className="fs-5 text-white fw-bold p-3 rounded border border-dark justify-content-center"
-          style={{
-            backgroundColor: "#131ee30e",
-          }}
-        >
-          {refreshMsg}
-        </HowToUse>
+        <></>
       ) : (
         <>
           <HowToUse className="align-items-center p-2 rounded border border-dark font-monospace">
@@ -259,6 +253,7 @@ const Home: React.FC = () => {
           </a>
         </p>
       </Footer>
+      {clickRefresh === true ? <Refresh>{refreshMsg}</Refresh> : <></>}
     </Container>
   );
 };
