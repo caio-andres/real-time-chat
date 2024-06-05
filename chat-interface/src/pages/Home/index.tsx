@@ -21,8 +21,9 @@ import {
   Title,
   Top,
   Footer,
-  Welcome,
+  HowToUse,
   Developed,
+  Welcome,
 } from "./styles";
 
 interface Message {
@@ -89,17 +90,17 @@ const Home: React.FC = () => {
   return (
     <Container className="d-flex flex-column align-items-center w-100">
       <Top
-        className="d-flex w-100 p-3 align-items-center row"
+        className="d-flex w-100 p-3 align-items-center justify-content-between"
         style={{
           cursor: "default",
           borderBottom: "1px solid #292727",
         }}
       >
-        <Title className="text-secondary col-sm font-monospace text-uppercase">
+        <Title className="text-secondary font-monospace text-uppercase">
           {title}
         </Title>
 
-        <div className="d-flex gap-2 col-sm justify-content-end align-items-center">
+        <div className="d-flex gap-2 justify-content-end align-items-center">
           <button className="btn btn-link">
             <img
               src="svg/refresh.svg"
@@ -125,27 +126,26 @@ const Home: React.FC = () => {
           </a>
         </div>
       </Top>
-      <h3 className="text-secondary font-monospace mt-5">
+      <Welcome className="text-secondary font-monospace mt-5">
         Welcome to the Real-time Chat
-      </h3>
-
-      <div className="input-group input-group-md m-3 col-sm w-25">
-        <span
-          className="input-group-text bg-dark text-success"
-          style={{ cursor: "default" }}
-          title="User"
-        >
-          <FaRegUser />
-        </span>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="form-control"
-          placeholder="Username..."
-        />
-      </div>
-      <Content className="mb-3 w-100 d-flex flex-column align-items-center">
+      </Welcome>
+      <Content className="mb-3 d-flex flex-column align-items-center">
+        <div className="input-group input-group-md m-3 w-25">
+          <span
+            className="input-group-text bg-dark text-success"
+            style={{ cursor: "default" }}
+            title="User"
+          >
+            <FaRegUser />
+          </span>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="form-control"
+            placeholder="Username..."
+          />
+        </div>
         <Card ref={chatRef} className="w-25">
           <ul className="d-flex flex-column">
             {messages.map((message) => {
@@ -190,28 +190,27 @@ const Home: React.FC = () => {
         </div>
       </Content>
       {clickRefresh === true ? (
-        <Welcome
-          className="fs-5 text-white fw-bold p-3 rounded border border-dark"
+        <HowToUse
+          className="fs-5 text-white fw-bold p-3 rounded border border-dark justify-content-center"
           style={{
             backgroundColor: "#131ee30e",
           }}
         >
           {refreshMsg}
-        </Welcome>
+        </HowToUse>
       ) : (
         <>
-          <Welcome className="d-flex flex-column align-items-center w-25 p-2 rounded border border-dark font-monospace">
-            <span className="text-white fs-5">How to chat</span>
+          <HowToUse className="align-items-center p-2 rounded border border-dark font-monospace">
+            <span className="text-white">How to chat</span>
             <p className="text-secondary text-center">
               <span style={{ color: "#3aaf69" }}>1.</span> Type your Username
               <br />
               <span style={{ color: "#3aaf69" }}>2.</span> Type your message
               <br />
               <span style={{ color: "#3aaf69" }}>3.</span> Send it
-              <br />
-              That simple! :D
             </p>
-          </Welcome>
+            <p className="text-secondary">That simple! :D</p>
+          </HowToUse>
         </>
       )}
       <Footer>

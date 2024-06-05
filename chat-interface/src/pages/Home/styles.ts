@@ -4,9 +4,36 @@ export const Container = styled.div``;
 
 export const Top = styled.header``;
 
-export const Title = styled.h1``;
+export const Title = styled.h1`
+  letter-spacing: 2px;
+`;
 
-export const Content = styled.main``;
+export const Welcome = styled.h3`
+  letter-spacing: 2px;
+  text-align: center;
+
+  @media (max-width: 700px) {
+    width: 65%;
+    text-align: center;
+  }
+
+  @media (max-width: 540px) {
+    width: 50%;
+    text-align: center;
+  }
+`;
+
+export const Content = styled.main`
+  width: 100%;
+
+  @media (max-width: 1300px) {
+    width: 150%;
+  }
+
+  @media (max-width: 960px) {
+    width: 250%;
+  }
+`;
 
 export const Card = styled.div`
   overflow-y: auto;
@@ -54,12 +81,28 @@ export const OtherMessage = styled.li`
   }
 `;
 
-export const Welcome = styled.div`
-  @media (max-width: 1780px) {
-    width: 75%;
-  }
+export const HowToUse = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 25%;
 
   background-color: #131ee30e;
+
+  @media (max-width: 1300px) {
+    width: 38%;
+  }
+
+  @media (max-width: 960px) {
+    width: 63%;
+  }
+
+  @media (max-height: 699px) {
+    font-size: 14px;
+  }
+
+  @media (max-height: 680px) {
+    display: none;
+  }
 `;
 
 export const Footer = styled.footer`
@@ -70,10 +113,18 @@ export const Footer = styled.footer`
   justify-content: center;
   align-items: center;
   font-size: 14px;
+
+  @media (max-height: 480px) {
+    display: none;
+  }
 `;
 
 export const Developed = styled.div`
   display: flex;
   gap: 24px;
   margin-bottom: 30px;
+
+  @media (max-width: 540px) {
+    font-size: 10px;
+  }
 `;
