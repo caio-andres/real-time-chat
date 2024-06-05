@@ -10,11 +10,12 @@ export const Content = styled.main``;
 
 export const Card = styled.div`
   overflow-y: auto;
-  max-height: 30vh;
+  max-height: 25vh;
 `;
 
 export const MyMessage = styled.li`
   padding: 8px;
+  margin-right: 20px;
   text-decoration: none;
   display: flex;
   flex-direction: column;

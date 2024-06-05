@@ -89,22 +89,7 @@ const Home: React.FC = () => {
         <Title className="text-secondary col-sm font-monospace text-uppercase">
           {title}
         </Title>
-        <div className="input-group m-3 col-sm">
-          <span
-            className="input-group-text bg-dark text-white"
-            style={{ cursor: "default" }}
-            title="User"
-          >
-            User:
-          </span>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="form-control"
-            placeholder="Type here..."
-          />
-        </div>
+
         <div className="d-flex gap-2 col-sm justify-content-end align-items-center">
           <button className="btn btn-link">
             <img
@@ -131,7 +116,21 @@ const Home: React.FC = () => {
           </a>
         </div>
       </Top>
-      <Content className="m-5 w-100 d-flex flex-column align-items-center">
+      <h3 className="text-secondary font-monospace mt-5">
+        Welcome to the Real-time Chat
+      </h3>
+
+      <div className="input-group input-group-md m-3 col-sm w-25 d-flex flex-column">
+        <span>User</span>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="form-control w-100 rounded"
+          placeholder="Type your username..."
+        />
+      </div>
+      <Content className="mb-3 w-100 d-flex flex-column align-items-center">
         <Card ref={chatRef} className="w-25">
           <ul className="d-flex flex-column">
             {messages.map((message) => {
@@ -158,7 +157,7 @@ const Home: React.FC = () => {
             })}
           </ul>
         </Card>
-        <div className="input-group input-group-sm m-3 w-25">
+        <div className="input-group input-group-md m-3 w-25">
           <input
             type="text"
             value={text}
@@ -176,25 +175,37 @@ const Home: React.FC = () => {
         </div>
       </Content>
       {clickRefresh === true ? (
-        <Welcome className="fs-5 text-white fw-bold bg-dark p-4 rounded border border-dark">
+        <Welcome
+          className="fs-5 text-white fw-bold p-3 rounded border border-dark"
+          style={{
+            backgroundColor: "#131ee30e",
+          }}
+        >
           {refreshMsg}
         </Welcome>
       ) : (
-        <Welcome className="d-flex flex-column align-items-center w-25 p-4 rounded border border-dark my-2">
-          <h3 className="text-white font-monospace">Welcome to the Chat!</h3>
-          <p className="text-secondary text-center font-monospace">
-            Write your name in the field above in the header, and then type your
-            message in the field above. When you press 'Send,' your message will
-            be sent to the ID you are chatting with in real time.
-          </p>
-          <div className="d-flex gap-3 mt-4">
-            <span className="text-info font-monospace">React</span>
-            <span className="text-danger font-monospace">NestJS</span>
-            <span className="text-white font-monospace">WebSockets</span>
-            <span className="text-primary font-monospace">TypeScript</span>
+        <>
+          <Welcome className="d-flex flex-column align-items-center w-25 p-2 rounded border border-dark font-monospace">
+            <span className="text-white fs-5">How to chat</span>
+            <p className="text-secondary text-center">
+              <span style={{ color: "#3aaf69" }}>1.</span> Type your Username
+              <br />
+              <span style={{ color: "#3aaf69" }}>2.</span> Type your message
+              <br />
+              <span style={{ color: "#3aaf69" }}>3.</span> Send it
+              <br />
+              That simple! :D
+            </p>
+          </Welcome>
+          <p className="mt-4 text-white">Developed with:</p>
+          <div className="d-flex gap-3">
+            <span className="text-info">React</span>
+            <span className="text-danger">NestJS</span>
+            <span style={{ color: "#9ac0f8" }}>WebSockets</span>
+            <span className="text-primary">TypeScript</span>
             <span style={{ color: "#820AFA" }}>Bootstrap</span>
           </div>
-        </Welcome>
+        </>
       )}
       <Footer>
         <p className="text-white">
