@@ -80,7 +80,7 @@ const Home: React.FC = () => {
   return (
     <Container className="d-flex flex-column align-items-center w-100">
       <Top
-        className="d-flex justify-content-between w-100 p-3 align-items-center row"
+        className="d-flex w-100 p-3 align-items-center row"
         style={{
           cursor: "default",
           borderBottom: "1px solid #292727",
