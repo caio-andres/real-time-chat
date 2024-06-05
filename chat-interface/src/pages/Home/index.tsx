@@ -1,7 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import * as uuid from "uuid";
+
 import { FaRegUser } from "react-icons/fa";
 import { IoSendOutline } from "react-icons/io5";
+import { FaReact } from "react-icons/fa";
+import { SiNestjs } from "react-icons/si";
+import { LuNetwork } from "react-icons/lu";
+import { SiTypescript } from "react-icons/si";
+import { FaBootstrap } from "react-icons/fa";
 
 import io from "socket.io-client";
 
@@ -16,6 +22,7 @@ import {
   Top,
   Footer,
   Welcome,
+  Developed,
 } from "./styles";
 
 interface Message {
@@ -205,17 +212,42 @@ const Home: React.FC = () => {
               That simple! :D
             </p>
           </Welcome>
-          <p className="mt-4 text-white">Developed with:</p>
-          <div className="d-flex gap-3">
-            <span className="text-info">React</span>
-            <span className="text-danger">NestJS</span>
-            <span style={{ color: "#9ac0f8" }}>WebSockets</span>
-            <span className="text-primary">TypeScript</span>
-            <span style={{ color: "#820AFA" }}>Bootstrap</span>
-          </div>
         </>
       )}
       <Footer>
+        <p style={{ color: "#2a4158" }}>Developed with</p>
+        <Developed className="font-monospace">
+          <div className="d-flex flex-column align-items-center gap-2">
+            <span className="text-primary">
+              <FaReact size={20} />
+            </span>
+            <span className="text-info">React</span>
+          </div>
+          <div className="d-flex flex-column align-items-center gap-2">
+            <span className="text-danger">
+              <SiNestjs size={20} />
+            </span>
+            <span className="text-danger">NestJS</span>
+          </div>
+          <div className="d-flex flex-column align-items-center gap-2">
+            <span className="text-info">
+              <LuNetwork size={20} />
+            </span>
+            <span style={{ color: "#9ac0f8" }}>WebSockets</span>
+          </div>
+          <div className="d-flex flex-column align-items-center gap-2">
+            <span className="text-primary">
+              <SiTypescript size={20} />
+            </span>
+            <span className="text-primary">TypeScript</span>
+          </div>
+          <div className="d-flex flex-column align-items-center gap-2">
+            <span style={{ color: "#820AFA" }}>
+              <FaBootstrap size={20} />
+            </span>
+            <span style={{ color: "#820AFA" }}>Bootstrap</span>
+          </div>
+        </Developed>
         <p className="text-white">
           {new Date().getFullYear()} Real-time Chat{" "}
           <span className="text-secondary">&copy;</span>{" "}

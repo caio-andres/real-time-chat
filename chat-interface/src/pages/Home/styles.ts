@@ -65,4 +65,15 @@ export const Welcome = styled.div`
 export const Footer = styled.footer`
   position: fixed;
   bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+`;
+
+export const Developed = styled.div`
+  display: flex;
+  gap: 24px;
+  margin-bottom: 30px;
 `;
