@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import * as uuid from "uuid";
 
 import io from "socket.io-client";
@@ -31,11 +31,15 @@ const socket = io("http://localhost:3333");
 
 const Home: React.FC = () => {
   const [title] = useState("Real-time Chat");
+
   const [name, setName] = useState<string>("");
   const [text, setText] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([]);
+
   const [refreshMsg, setRefreshMsg] = useState<string>("");
   const [clickRefresh, setClickRefresh] = useState<boolean>(false);
+
+  const chatRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function receivedMessage(message: Payload) {
@@ -51,6 +55,10 @@ const Home: React.FC = () => {
     socket.on("msgToClient", (message: Payload) => {
       receivedMessage(message);
     });
+
+    if (chatRef.current) {
+      chatRef.current.scrollTop = chatRef.current.scrollHeight; // it scroll down the chat when the overflow-Y appears
+    }
   }, [messages, name, text]);
 
   function validateInput() {
@@ -124,7 +132,7 @@ const Home: React.FC = () => {
         </div>
       </Top>
       <Content className="m-5 w-100 d-flex flex-column align-items-center">
-        <Card className="w-25">
+        <Card ref={chatRef} className="w-25">
           <ul className="d-flex flex-column">
             {messages.map((message) => {
               if (message.name === name) {
