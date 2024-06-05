@@ -13,6 +13,7 @@ import {
   Title,
   Top,
   Footer,
+  Welcome,
 } from "./styles";
 
 interface Message {
@@ -82,33 +83,35 @@ const Home: React.FC = () => {
         </Title>
         <div className="input-group m-3 col-sm">
           <span
-            className="input-group-text"
+            className="input-group-text bg-dark text-white"
             style={{ cursor: "default" }}
-            title="Type your Username"
+            title="User"
           >
-            @
+            User:
           </span>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="form-control"
-            placeholder="Type you user..."
+            placeholder="Type here..."
           />
         </div>
-        <div className="d-flex gap-2 col-sm justify-content-end">
-          <img
-            src="svg/refresh.svg"
-            width="32"
-            height="32"
-            alt="Refresh"
-            style={{ cursor: "pointer" }}
-            onClick={() => {
-              handleRefreshClick();
-              setRefreshMsg("Refreshing the page...");
-              setClickRefresh(true);
-            }}
-          />
+        <div className="d-flex gap-2 col-sm justify-content-end align-items-center">
+          <button className="btn btn-link">
+            <img
+              src="svg/refresh.svg"
+              width="32"
+              height="32"
+              alt="Refresh"
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                handleRefreshClick();
+                setRefreshMsg("Refreshing the page...");
+                setClickRefresh(true);
+              }}
+            />
+          </button>
           <a href="https://linktr.ee/caioandres" target="_blank">
             <img
               src="images/eu-circle.png"
@@ -163,34 +166,41 @@ const Home: React.FC = () => {
             Send
           </button>
         </div>
-        <Footer></Footer>
       </Content>
       {clickRefresh === true ? (
-        <p className="fs-5 text-white fw-bold bg-dark p-4 rounded border border-light">
+        <Welcome className="fs-5 text-white fw-bold bg-dark p-4 rounded border border-dark">
           {refreshMsg}
-        </p>
+        </Welcome>
       ) : (
-        <div className="d-flex flex-column align-items-center w-25 bg-dark p-4 rounded border border-secondary my-2">
+        <Welcome className="d-flex flex-column align-items-center w-25 p-4 rounded border border-dark my-2">
           <h3 className="text-white font-monospace">Welcome to the Chat!</h3>
           <p className="text-secondary text-center font-monospace">
-            Write your name in the designated field, and then type your message
-            in the field above. When you press "Send", your message will be sent
-            to the ID you are chatting with in real time.
+            Write your name in the field above in the header, and then type your
+            message in the field above. When you press 'Send,' your message will
+            be sent to the ID you are chatting with in real time.
           </p>
-          <div className="d-flex gap-3 my-4">
+          <div className="d-flex gap-3 mt-4">
             <span className="text-info font-monospace">React</span>
             <span className="text-danger font-monospace">NestJS</span>
             <span className="text-white font-monospace">WebSockets</span>
             <span className="text-primary font-monospace">TypeScript</span>
             <span style={{ color: "#820AFA" }}>Bootstrap</span>
           </div>
-          <footer className="text-white">
-            <span className="text-secondary">{new Date().getFullYear()}</span>{" "}
-            Real-time Chat <span className="text-secondary">&#169;</span> Caio
-            André
-          </footer>
-        </div>
+        </Welcome>
       )}
+      <Footer>
+        <p className="text-white">
+          {new Date().getFullYear()} Real-time Chat{" "}
+          <span className="text-secondary">&copy;</span>{" "}
+          <a
+            href="https://linktr.ee/caioandres"
+            target="_blank"
+            style={{ textDecoration: "none" }}
+          >
+            Caio André
+          </a>
+        </p>
+      </Footer>
     </Container>
   );
 };

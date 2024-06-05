@@ -10,7 +10,7 @@ export const Content = styled.main``;
 
 export const Card = styled.div`
   overflow-y: auto;
-  max-height: 50vh;
+  max-height: 30vh;
 `;
 
 export const MyMessage = styled.li`
@@ -53,4 +53,15 @@ export const OtherMessage = styled.li`
   }
 `;
 
-export const Footer = styled.footer``
+export const Welcome = styled.div`
+  @media (max-width: 1780px) {
+    width: 75%;
+  }
+
+  background-color: #131ee30e;
+`;
+
+export const Footer = styled.footer`
+  position: fixed;
+  bottom: 0;
+`;
