@@ -278,7 +278,13 @@ const Home: React.FC = () => {
           </a>
         </p>
       </Footer>
-      {clickRefresh === true ? <Refresh>{refreshMsg}</Refresh> : <></>}
+      {clickRefresh === true ? (
+        <Refresh>
+          <span className="font-monospace">{refreshMsg}</span>
+        </Refresh>
+      ) : (
+        <></>
+      )}
     </Container>
   );
 };
