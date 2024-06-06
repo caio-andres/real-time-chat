@@ -5,9 +5,10 @@ import { FaRegUser } from "react-icons/fa";
 import { IoSendOutline } from "react-icons/io5";
 import { FaReact } from "react-icons/fa";
 import { SiNestjs } from "react-icons/si";
-import { LuNetwork } from "react-icons/lu";
+import { SiSocketdotio } from "react-icons/si";
 import { SiTypescript } from "react-icons/si";
 import { FaBootstrap } from "react-icons/fa";
+import { SiVite } from "react-icons/si";
 
 import io from "socket.io-client";
 
@@ -241,16 +242,22 @@ const Home: React.FC = () => {
             <span className="text-danger">NestJS</span>
           </div>
           <div className="d-flex flex-column align-items-center gap-2">
-            <span className="text-info">
-              <LuNetwork size={20} />
+            <span className="text-white">
+              <SiSocketdotio size={20} />
             </span>
-            <span style={{ color: "#9ac0f8" }}>WebSockets</span>
+            <span className="text-white">Socket.IO</span>
           </div>
           <div className="d-flex flex-column align-items-center gap-2">
             <span className="text-primary">
               <SiTypescript size={20} />
             </span>
             <span className="text-primary">TypeScript</span>
+          </div>
+          <div className="d-flex flex-column align-items-center gap-2">
+            <span style={{ color: "#FFCB23" }}>
+              <SiVite size={20} />
+            </span>
+            <span style={{ color: "#FFCB23" }}>Vite</span>
           </div>
           <div className="d-flex flex-column align-items-center gap-2">
             <span style={{ color: "#820AFA" }}>
