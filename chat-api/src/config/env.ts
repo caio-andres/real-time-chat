@@ -1,4 +1,4 @@
-const CORS_ORIGIN = ['http://localhost:5173'];
+const CORS_ORIGIN = ['http://localhost:3000'];
 const CORS_METHODS = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
 const CORS_CREDENTIALS = true;
 
