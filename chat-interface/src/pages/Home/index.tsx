@@ -220,7 +220,7 @@ const Home: React.FC = () => {
                 <br />
                 <span style={{ color: "#3aaf69" }}>3.</span> Send it
               </p>
-              <p className="text-secondary">That simple! :D</p>
+              <p className="text-secondary text-center">That simple! :D</p>
             </div>
           </HowToUse>
         </>
