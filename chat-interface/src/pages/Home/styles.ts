@@ -6,6 +6,7 @@ export const Top = styled.header``;
 
 export const Title = styled.h1`
   letter-spacing: 2px;
+  user-select: none;
 `;
 
 export const Welcome = styled.h3`
@@ -88,6 +89,18 @@ export const HowToUse = styled.div`
 
   background-color: #131ee30e;
 
+  user-select: none;
+
+  .accordion-up {
+    transition: transform 0.5s ease;
+    transform: rotateX(-180deg);
+  }
+
+  .accordion-down {
+    transition: transform 0.5s ease;
+    transform: rotateX(0deg);
+  }
+
   @media (max-width: 1300px) {
     width: 38%;
   }
@@ -96,7 +109,7 @@ export const HowToUse = styled.div`
     width: 63%;
   }
 
-  @media (max-height: 900px) {
+  @media (max-height: 690px) {
     display: none;
   }
 `;
@@ -120,8 +133,14 @@ export const Developed = styled.div`
   gap: 24px;
   margin-bottom: 30px;
 
+  user-select: none;
+
   @media (max-width: 540px) {
     font-size: 10px;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 6px;
   }
 `;
 

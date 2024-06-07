@@ -1,14 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import * as uuid from "uuid";
 
-import { FaRegUser } from "react-icons/fa";
 import { IoSendOutline } from "react-icons/io5";
-import { FaReact } from "react-icons/fa";
-import { SiNestjs } from "react-icons/si";
-import { SiSocketdotio } from "react-icons/si";
-import { SiTypescript } from "react-icons/si";
-import { FaBootstrap } from "react-icons/fa";
-import { SiVite } from "react-icons/si";
+import { SiVite, SiTypescript, SiSocketdotio, SiNestjs } from "react-icons/si";
+import { FaChevronDown, FaBootstrap, FaReact, FaRegUser } from "react-icons/fa";
 
 import io from "socket.io-client";
 
@@ -51,6 +46,9 @@ const Home: React.FC = () => {
   const [refreshMsg, setRefreshMsg] = useState<string>("");
   const [clickRefresh, setClickRefresh] = useState<boolean>(false);
 
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [allowToggle, setAllowToggle] = useState<boolean>(true);
+
   const chatRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -69,7 +67,8 @@ const Home: React.FC = () => {
     });
 
     if (chatRef.current) {
-      chatRef.current.scrollTop = chatRef.current.scrollHeight; // it scroll down the chat when the overflow-Y appears
+      // it scroll down the chat when the overflow-Y appears
+      chatRef.current.scrollTop = chatRef.current.scrollHeight;
     }
   }, [messages, name, text]);
 
@@ -89,6 +88,17 @@ const Home: React.FC = () => {
     }
   }
 
+  const toggleHowToUse = (): void => {
+    if (allowToggle) {
+      setIsOpen(!isOpen);
+      setAllowToggle(false);
+    }
+  };
+
+  const handleTransitionEnd = (): void => {
+    setAllowToggle(true);
+  };
+
   return (
     <Container className="d-flex flex-column align-items-center w-100">
       <Top
@@ -98,7 +108,7 @@ const Home: React.FC = () => {
           borderBottom: "1px solid #292727",
         }}
       >
-        <Title className="text-secondary font-monospace text-uppercase">
+        <Title className="text-secondary font-monospace">
           {title}
         </Title>
 
@@ -192,25 +202,35 @@ const Home: React.FC = () => {
         </div>
       </Content>
       {clickRefresh === true ? (
-        <></>
+        <Refresh>
+          <span className="font-monospace">{refreshMsg}</span>
+        </Refresh>
       ) : (
         <>
           <HowToUse className="accordion-item align-items-center p-2 rounded border border-dark font-monospace">
-            <span className="text-white">
+            <span className="text-white w-100">
               <button
-                className="accordion-button"
+                className="d-flex gap-2 justify-content-center w-100 text-white"
+                style={{ backgroundColor: "transparent", border: "none" }}
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#collapseOne"
                 aria-expanded="true"
                 aria-controls="collapseOne"
+                onClick={toggleHowToUse}
+                onTransitionEnd={handleTransitionEnd}
               >
-                How to chat
+                <span>How to chat</span>
+                <span
+                  className={`${isOpen ? "accordion-up" : "accordion-down"}`}
+                >
+                  <FaChevronDown />
+                </span>
               </button>
             </span>
             <div
               id="collapseOne"
-              className="accordion-collapse collapse show"
+              className="accordion-collapse collapse"
               aria-labelledby="headingOne"
               data-bs-parent="#accordionExample"
             >
@@ -278,13 +298,6 @@ const Home: React.FC = () => {
           </a>
         </p>
       </Footer>
-      {clickRefresh === true ? (
-        <Refresh>
-          <span className="font-monospace">{refreshMsg}</span>
-        </Refresh>
-      ) : (
-        <></>
-      )}
     </Container>
   );
 };

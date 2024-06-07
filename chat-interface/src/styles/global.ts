@@ -32,4 +32,8 @@ export default createGlobalStyle`
     background: linear-gradient(to bottom, #5785e3b3, #4e1ce69e);
     border-radius: 0.3em;
 }
+
+::selection {
+  background-color: #C1E1C1;
+}
 `;
